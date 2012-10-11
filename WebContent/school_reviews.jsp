@@ -26,8 +26,8 @@
 		reviews = pstatement.executeQuery();
 	
 		if (reviews.next()) {
-			school_fullname = reviews.getString(2);
-			school_shortname = reviews.getString(3);
+			school_fullname = reviews.getString(5);
+			school_shortname = reviews.getString(6);
 		}
 	} catch (Exception ex) {
 		out.println("Unable to execute query to database."
@@ -69,13 +69,12 @@
 			<c:forEach var="review" items="${reviews.rowsByIndex}">
 				<c:out value="${review[2]}" />
 				<br>
-				<i>${review[1]}</i>
+				<i><c:out value="${review[1]}" /></i>
 				<br>
 				<br>
 			</c:forEach>
 		</c:otherwise>
 	</c:choose>
-
 	<table border="0">
 		<thead>
 			<tr>
