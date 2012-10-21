@@ -2,7 +2,7 @@
 <%@page import="javax.naming.InitialContext"%>
 <%@page import="javax.naming.Context"%>
 <%@page import="javax.sql.DataSource"%>
-<%@include file="../adminHeader.jsp"%>
+<%@include file="adminHeader.jsp"%>
 <%
 Context initCtx = new InitialContext();
 Context envCtx = (Context) initCtx.lookup("java:comp/env");
@@ -13,6 +13,7 @@ PreparedStatement pstatement = null;
 ResultSet rs = null;
 %>
 <html>
+<body>
 <table>
 <tr>
 	<th>Username</th>
@@ -33,8 +34,9 @@ try {
 		out.println("<td>" + rs.getBoolean(4) + "</td>");
 		out.println("<td>" + rs.getBoolean(5) + "</td>");
 		%>
-		<td><a href="edit_user_form.jsp?user=<%= rs.getString(1) %>">Edit</a> 
-		| <a href="delete_user.jsp?user=<%= rs.getString(1) %>">Delete</a></td>
+		<td>
+		<a href="edit_user_form.jsp?user=<%=rs.getString(1)%>">Edit</a> |  
+		<a href="delete_user.jsp?user=<%=rs.getString(1)%>&token=<%=session.getAttribute("token")%>">Delete</a></td>
 		<%
 		out.println("</tr>");
 	}
@@ -46,7 +48,7 @@ try {
 	connection.close();
 }
 %>
-<table>
-<hr>
-<a href="adminIndex.jsp">Admin</a>
+</table>
+<%@include file="adminFooter.jsp"%>
+</body>
 </html>

@@ -13,7 +13,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="stylesheet" type="text/css" href="lutstyle.css">
+        <link rel="stylesheet" type="text/css" href="../lutstyle.css">
         <title>LUT 2.0 - ${param.country}</title>
     </head>
     <body>

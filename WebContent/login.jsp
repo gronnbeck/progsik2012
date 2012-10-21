@@ -73,9 +73,6 @@
         <title>LUT 2.0</title>
     </head>
     <body>
-		<h1>Login succeeded</h1> 
-		Welcome <%=username%>.<br> 
-		You will be redirected to your home page in 5 seconds.
-		<meta http-equiv="refresh" content="5;url=index.jsp">
+		<meta http-equiv="refresh" content="0;url=user/index.jsp">
 	</body>
 </html>

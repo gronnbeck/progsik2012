@@ -51,7 +51,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<link rel="stylesheet" type="text/css" href="lutstyle.css">
+	<link rel="stylesheet" type="text/css" href="../lutstyle.css">
 	<title>Reviews for <%=school_fullname%></title>
 </head>
 <body>
@@ -87,12 +87,12 @@
 					<form action="add_review.jsp" method="post">
 						<input type="hidden" name="school_id" value="${param.school_id}" />
 						<textarea name="review" rows=10 cols=60 wrap="physical" autofocus="on"></textarea>
-						<br> <br> Your name: <input type="text" name="name" />
-						<br> <br> <input type="submit" value="Add review" />
+						<br> Your name: <input type="text" name="name" /><br>
+						<input type="hidden" name="token" value="<%=session.getAttribute("token")%>"/><br>
+						<br> <input type="submit" value="Add review" /><br>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-
 </body>
 </html>

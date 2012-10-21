@@ -6,14 +6,13 @@
 <%@page import="java.util.Properties"%>
 <%!
 class SendMail {
- 
-	String  d_email = "lut.website@gmail.com",
-            d_password = "progsik123",
-            d_host = "smtp.gmail.com",
-            d_port  = "465",
-            m_to = "",
-            m_subject = "",
-            m_text = "";
+	String d_email = "lut.website@gmail.com",
+           d_password = "progsik123",
+           d_host = "smtp.gmail.com",
+           d_port  = "465",
+           m_to = "",
+           m_subject = "",
+           m_text = "";
 	
 	public SendMail() {
 	

@@ -1,4 +1,4 @@
-<%@include file="../adminHeader.jsp"%>
+<%@include file="adminHeader.jsp"%>
 <%@page import="java.util.regex.Pattern"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Connection"%>
@@ -15,6 +15,14 @@
 	<%
 		return;
 	}
+	
+	String token = request.getParameter("token");
+	String sessionToken = session.getAttribute("token").toString();
+	if(token == null || !token.equals(sessionToken)) {
+		out.println("CSRF does not work here...");
+		return;
+	}
+
 	String short_name = request.getParameter("short_name");
 	String full_name = request.getParameter("full_name");
 	
@@ -45,4 +53,4 @@
 		connection.close();
 	}
 	%>
-	<meta http-equiv="refresh" content="0;url=adminIndex.jsp">
+<meta http-equiv="refresh" content="0;url=adminIndex.jsp">

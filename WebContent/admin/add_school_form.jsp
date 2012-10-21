@@ -1,39 +1,15 @@
-<%@include file="../adminHeader.jsp"%>
+<%@include file="adminHeader.jsp"%>
 <html>
-
 <body>
-
 <form action="add_school.jsp" method="POST">
-
-<div>
- fullname <br>
- <input type="text" name="fullname"></input><br>
-</div>
-
-<div>
- shortname <br>
- <input type="text" name="shortname"></input><br>
-</div>
-
-<div>
- place <br>
- <input type="text" name="place"></input><br>
-</div>
-
-<div>
- zip <br>
- <input type="text" name="zip"></input><br>
-</div>
-
-<div>
- country <br>
- <input type="text" name="country"></input><br>
-</div>
-
-<input type="submit" value="submit">
-
+	fullname <br> <input type="text" name="fullname"></input><br>
+	shortname <br> <input type="text" name="shortname"></input><br>
+	place <br> <input type="text" name="place"></input><br>
+	zip	<br> <input type="text" name="zip"></input><br>
+	country <br><input type="text" name="country"></input><br>
+	<input type="hidden" name="token" value="<%=session.getAttribute("token")%>"/><br>
+	<input type="submit" value="submit">
 </form>
-
+<%@include file="adminFooter.jsp"%>
 </body>
-
 </html>

@@ -29,5 +29,6 @@
                 </tr>
             </tbody>
         </table>
+        <a href="registerForm.jsp">Register</a>
     </body>
 </html>

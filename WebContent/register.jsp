@@ -75,7 +75,7 @@
 		}
 	}
 	
-	String message = "Congratulations on registering... Please confirm your account by clicking the following link: http://localhost:8080/LUT_2.0/confirmRegistration.jsp?validate=" + validateString;
+	String message = "Congratulations on registering... Please confirm your account by clicking the following link: http://localhost:8080/LUT_2.0/confirmRegistration.jsp?username=" + username + "&validate=" + validateString;
 	
 	SendMail sendmail = new SendMail();
 	sendmail.send(email, "Confirm registration on LUT2.0", message);
@@ -94,7 +94,7 @@
         <title>Register complete!</title>
     </head>
     <body>
-        An confirmation email has been sent to YOU!
+        A confirmation email has been sent to YOU!<br>
         When you have confirmed your email, you may login <a href="loginForm.jsp">here</a>.
     </body>
 </html>

@@ -4,15 +4,13 @@
 <%@page import="javax.naming.InitialContext"%>
 <%@page import="javax.naming.Context"%>
 <%@page import="javax.sql.DataSource"%>
-<%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@include file="userHeader.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta http-equiv="refresh" content="5;url=index.jsp">
-	<link rel="stylesheet" type="text/css" href="lutstyle.css">
+	<link rel="stylesheet" type="text/css" href="../lutstyle.css">
 	<title>Review added!</title>
 </head>
 
@@ -26,6 +24,12 @@
 		return string.matches("^[\\w\\s!:/,.]+$");
 	}%>
 <%
+	String token = request.getParameter("token");
+	String sessionToken = session.getAttribute("token").toString();
+	if(token == null || !token.equals(sessionToken)) {
+		out.println("CSRF does not work here...");
+		return;
+	}
 	String schooldId = request.getParameter("school_id");
 	String name = request.getParameter("name");
 	String review = request.getParameter("review");
@@ -38,6 +42,7 @@
 		<br> You will be redirected to the LUT2.0 main page in a few seconds.
 	</body>
 	<%
+		return;
 	} else {
 
 		Connection connection = dataSource.getConnection();
@@ -58,10 +63,9 @@
 		}
 	%>
 	<body>
-		<h1>Thanks ${param.name}!</h1>
+		<h1>Thanks <%=name%>!</h1>
 		Your contribution is appreciated.
-		<br> You will be redirected to the LUT2.0 main page in a few
-		seconds.
+		<br> You will be redirected to the LUT2.0 main page in a few seconds.
 		</tr>
 	</body>
 	<%

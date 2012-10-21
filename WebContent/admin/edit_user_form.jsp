@@ -2,7 +2,7 @@
 <%@page import="javax.naming.InitialContext"%>
 <%@page import="javax.naming.Context"%>
 <%@page import="javax.sql.DataSource"%>
-<%@include file="../adminHeader.jsp"%>
+<%@include file="adminHeader.jsp"%>
 <%
 Context initCtx = new InitialContext();
 Context envCtx = (Context) initCtx.lookup("java:comp/env");
@@ -13,6 +13,7 @@ PreparedStatement pstatement = null;
 ResultSet rs = null;
 %>
 <html>
+<body>
 <%
 String username = "", email = "";
 boolean isThisGuyAdmin = false;
@@ -37,22 +38,17 @@ try {
 %>
 
 <form action="edit_user.jsp" method="post">
-	<h1><%= username %></h1>
-	<div>
-	Email <input type="text" size="30" name="email" value="<%=email%>"><br>
-	</div>
+	Username: <%=username %> <br>
+	Email: <input type="text" size="30" name="email" value="<%=email%>"><br>
 	<input type="hidden" value="<%=username%>" name="username">
-	<div>
-	Admin:
-	<select name="is_admin">
+	Admin: <select name="is_admin">
 		<option <%if(isThisGuyAdmin)out.print("SELECTED");%> value="yes">Yes</option>
 		<option <%if(!isThisGuyAdmin)out.print("SELECTED");%> value="no">No</option>
 	</select>
-	</div>
+	<input type="hidden" name="token" value="<%=session.getAttribute("token")%>"/><br>
 	<input type="submit" value="Oppdater">
 </form>
-
-<hr>
-<a href="adminIndex.jsp">Admin</a>
+<%@include file="adminFooter.jsp"%>
+</body>
 </html>
 

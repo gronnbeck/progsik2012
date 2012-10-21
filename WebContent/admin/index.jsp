@@ -1,4 +1,4 @@
-<%@include file="../adminHeader.jsp"%>
+<%@include file="adminHeader.jsp"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -16,6 +16,6 @@
 <li><a href="add_school_form.jsp">Add School</a></li>
 
 </ul>
-
+<%@include file="adminFooter.jsp"%>
 </body>
 </html>

@@ -1,4 +1,4 @@
-<%@include file="userHeader.jsp"%>
+<%@include file="../user/userHeader.jsp"%>
 <%
 boolean isAdmin = false;
 try {
@@ -8,7 +8,7 @@ try {
 }
 if(!isAdmin) {
 	%>
-	<meta http-equiv="refresh" content="0;url=../loginForm.jsp">
+	<meta http-equiv="refresh" content="0;url=../user/index.jsp">
 	<%
 	return;
 }
