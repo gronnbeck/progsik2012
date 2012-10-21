@@ -1,8 +1,9 @@
+<%@include file="../adminHeader.jsp"%>
 <html>
 
 <body>
 
-<form action="add_country.jsp">
+<form action="add_country.jsp" method="POST">
 
 <div>
 	Short name<br/>

@@ -96,5 +96,5 @@
     <body>
         An confirmation email has been sent to YOU!
         When you have confirmed your email, you may login <a href="loginForm.jsp">here</a>.
-       </body>
-    </html>
+    </body>
+</html>

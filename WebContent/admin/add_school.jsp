@@ -6,7 +6,7 @@
 <%@page import="javax.naming.Context"%>
 <%@page import="javax.sql.DataSource"%>
 <%!boolean isLegal(String string) {
-		return string.matches("^[\\w\\s!:/,.]+$");
+		return string.matches("^[\\w\\s!:/,.[0-9]]+$");
 	}%>
 <%
 	if(request.getMethod() != "POST") {
@@ -15,12 +15,16 @@
 	<%
 		return;
 	}
-	String short_name = request.getParameter("short_name");
-	String full_name = request.getParameter("full_name");
+	String fullname = request.getParameter("fullname");
+	String shortname = request.getParameter("shortname");
+	String place = request.getParameter("place");
+	String zip = request.getParameter("zip");
+	String country = request.getParameter("country");
 	
-	if(short_name == null || full_name == null || !isLegal(short_name) || !isLegal(full_name)) {
+	if(fullname == null || shortname == null || place == null || zip == null || country == null ||
+			!isLegal(fullname) || !isLegal(shortname) || !isLegal(place) || !isLegal(country) || !isLegal(zip)) {
 		%>
-		<meta http-equiv="refresh" content="5;url=add_country_form.jsp">
+		<meta http-equiv="refresh" content="0;url=add_school_form.jsp">
 		<%
 		return;
 	}
@@ -32,10 +36,13 @@
 	Connection connection = dataSource.getConnection();
 	PreparedStatement pstatement = null;
 	try {
-		String queryString = "INSERT INTO country(short_name, full_name) VALUES(?, ?)";
+		String queryString = "INSERT INTO school(full_name, short_name, place, zip, country) VALUES(?, ?, ?, ?, ?)";
 		pstatement = connection.prepareStatement(queryString);
-		pstatement.setString(1, short_name);
-		pstatement.setString(2, full_name);
+		pstatement.setString(1, fullname);
+		pstatement.setString(2, shortname);
+		pstatement.setString(3, place);
+		pstatement.setString(4, zip);
+		pstatement.setString(5, country);
 		pstatement.executeUpdate();
 	} catch (Exception ex) {
 		out.println("Unable to execute update to database: " + ex.getMessage());

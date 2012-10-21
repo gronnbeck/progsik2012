@@ -20,7 +20,7 @@ PRIMARY KEY (short_name)
 );
 
 create table school(
-school_id int NOT NULL,
+school_id int NOT NULL AUTO_INCREMENT,
 full_name varchar(100),
 short_name varchar(10),
 place varchar(50),

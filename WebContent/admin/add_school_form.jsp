@@ -1,8 +1,9 @@
+<%@include file="../adminHeader.jsp"%>
 <html>
 
 <body>
 
-<form action="add_school.jsp" method="post">
+<form action="add_school.jsp" method="POST">
 
 <div>
  fullname <br>
