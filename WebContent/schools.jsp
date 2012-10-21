@@ -1,6 +1,6 @@
 <%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@include file="userHeader.jsp"%>
 
 <sql:query var="school" dataSource="jdbc/lut2">
     SELECT * FROM country, school
@@ -12,7 +12,6 @@
 <!DOCTYPE html>
 <html>
     <head>
-    	<%@include file="header.jsp"%>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" type="text/css" href="lutstyle.css">
         <title>LUT 2.0 - ${param.country}</title>

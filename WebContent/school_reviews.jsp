@@ -7,6 +7,7 @@
 <%@page import="javax.sql.DataSource"%>
 <%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@include file="userHeader.jsp"%>
 <%
 	String schoolId = request.getParameter("school_id");
 	String school_fullname = null;
@@ -49,10 +50,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<%@include file="header.jsp"%>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" type="text/css" href="lutstyle.css">
-<title>Reviews for <%=school_fullname%></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" type="text/css" href="lutstyle.css">
+	<title>Reviews for <%=school_fullname%></title>
 </head>
 <body>
 	<h1> Reviews for <%=school_shortname%></h1>
