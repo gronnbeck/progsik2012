@@ -45,6 +45,7 @@
 		</tbody>
 	</table>
 	<a href="../admin/index.jsp">Admin</a> -
+	<a href="changePasswordForm.jsp">Change password</a> -
 	<a href="logout.jsp">Logout</a>
 </body>
 </html>

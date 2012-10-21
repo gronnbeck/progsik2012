@@ -1,5 +1,3 @@
-
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -29,6 +27,6 @@
                 </tr>
             </tbody>
         </table>
-        <a href="registerForm.jsp">Register</a>
+        <a href="registerForm.jsp">Register</a> - <a href="resetPasswordForm.jsp">Forgot password?</a>
     </body>
 </html>

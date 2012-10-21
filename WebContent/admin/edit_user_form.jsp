@@ -1,8 +1,8 @@
+<%@include file="adminHeader.jsp"%>
 <%@page import="java.sql.*"%>
 <%@page import="javax.naming.InitialContext"%>
 <%@page import="javax.naming.Context"%>
 <%@page import="javax.sql.DataSource"%>
-<%@include file="adminHeader.jsp"%>
 <%
 Context initCtx = new InitialContext();
 Context envCtx = (Context) initCtx.lookup("java:comp/env");
