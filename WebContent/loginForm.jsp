@@ -10,11 +10,11 @@
         <title>LUTAdmin</title>
     </head>
     <body>
-        <h1>Welcome to the LUT administration pages!</h1>
+        <h1>Welcome to the LUT2.0 login page!</h1>
         <table border="0">
             <thead>
                 <tr>
-                    <th>Log on here to perform administrative tasks</th>
+                    <th>Login:</th>
                 </tr>
             </thead>
             <tbody>
