@@ -1,4 +1,3 @@
-<%@page import="org.joda.time.DateTime"%>
 <%@page import="java.util.Random"%>
 <%@page import="java.util.regex.Pattern"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -7,6 +6,7 @@
 <%@page import="javax.naming.Context"%>
 <%@page import="javax.sql.DataSource"%>
 <%@page import="java.security.MessageDigest"%>
+<%@page import="com.sun.org.apache.xml.internal.security.utils.Base64"%>
 <%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@include file="SendMail.jsp"%>
@@ -27,9 +27,11 @@
 	String username = request.getParameter("username");
 	String email = request.getParameter("email");
 	if(password == null) {
+	out.println("You dick! Write a password...");
 	} else {
 	md.update(password.getBytes("UTF-8"));
 	byte[] digest = md.digest();
+	String digestString = Base64.encode(digest).toString();
 	
 	// Generate random validatestring
 	Random random = new Random(System.nanoTime());
@@ -41,7 +43,7 @@
 	
 	if (!isLegal(password) || !isLegal(username)) {
 		%>
-		REDIRECTING IN 5
+		REDIRECTING IN 5 SECONDS!!!
 		<meta http-equiv="refresh" content="5;url=registerForm.jsp">
 		<%
 		return;
@@ -51,12 +53,12 @@
 		PreparedStatement pstatement = null;
 		try {
 			String queryString =
-					"INSERT INTO users(username,password,email,usertype,validated,validatestring) VALUES (?, ?, ?, ?, ?, ?)";
+					"INSERT INTO users(username,password,email,is_admin,validated,validatestring) VALUES (?, ?, ?, ?, ?, ?)";
 			pstatement = connection.prepareStatement(queryString);
 			pstatement.setString(1, username);
-			pstatement.setString(2, digest.toString());
+			pstatement.setString(2, digestString);
 			pstatement.setString(3, email);
-			pstatement.setInt(4, 0);
+			pstatement.setBoolean(4, false);
 			pstatement.setBoolean(5, false);
 			pstatement.setString(6, validateString);		
 			pstatement.executeUpdate();

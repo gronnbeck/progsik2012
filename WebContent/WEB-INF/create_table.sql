@@ -1,15 +1,16 @@
-drop table admin_users;
+drop table users;
 drop table country;
 drop table school;
 drop table user_reviews;
 
 create table users(
-uname varchar(255) NOT NULL,
-pw varchar(255),
+username varchar(255) NOT NULL,
+password varchar(255),
 email varchar(255),
 is_admin Boolean,
-token varchar(56),
-PRIMARY KEY (uname)
+validated Boolean,
+validatestring varchar(42),
+PRIMARY KEY (username)
 );
 
 create table country(

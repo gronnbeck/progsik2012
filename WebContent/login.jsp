@@ -1,5 +1,5 @@
-
 <%@page import="java.security.MessageDigest"%>
+<%@page import="com.sun.org.apache.xml.internal.security.utils.Base64"%>
 <%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
@@ -16,12 +16,13 @@
 	
 	md.update(password.getBytes("UTF-8"));
 	byte[] digest = md.digest();
+	String digestString = Base64.encode(digest).toString();
 %>
 
 <sql:query var="users" dataSource="jdbc/lut2">
-    SELECT * FROM admin_users
-    WHERE  uname = ? <sql:param value="<%=username%>" /> 
-    AND pw = ? <sql:param value="<%=digest.toString()%>"/>
+    SELECT * FROM users
+    WHERE  username = ? <sql:param value="<%=username%>" /> 
+    AND password = ? <sql:param value="<%=digestString%>"/>
 </sql:query>
     
 <c:set var="userDetails" value="${users.rows[0]}"/>
@@ -42,7 +43,7 @@
             </c:when>
             <c:otherwise>
                 <h1>Login succeeded</h1> 
-                Welcome ${ userDetails.uname}.<br> 
+                Welcome ${userDetails.uname}.<br> 
                 Unfortunately, there is no admin functionality here. <br>
                 You need to figure out how to tamper with the application some other way.
             </c:otherwise>

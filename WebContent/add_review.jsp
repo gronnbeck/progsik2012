@@ -36,9 +36,7 @@
 	<body>
 		<h1>Thanks dick!</h1>
 		Unfortunately, you tried to screw us, and we can't accept that!.
-		<br> You will be redirected to the LUT2.0 main page in a few
-		seconds.
-		</tr>
+		<br> You will be redirected to the LUT2.0 main page in a few seconds.
 	</body>
 	<%
 	} else {

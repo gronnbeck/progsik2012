@@ -1,12 +1,12 @@
 delete from school;
 delete from country;
-delete from admin_users;
+delete from users;
 delete from user_reviews;
 
-insert into users values ('nico','360cdbba702f58890c261b2c4ec7d6cc3c214850a584ed74deaa7700cdefe07a', 'nico.hvi@gmail.com', false, "QWERTY");
-insert into users values ('skovly','360cdbba702f58890c261b2c4ec7d6cc3c214850a584ed74deaa7700cdefe07a', 'jorgen.skovly@gmail.com', false, "QWERTY");
-
-
+insert into users values ('nico','NgzbunAvWIkMJhssTsfWzDwhSFClhO103qp3AM3v4Ho=', 'nico.hvi@gmail.com', false, true, "QWERTY");
+insert into users values ('skovly','NgzbunAvWIkMJhssTsfWzDwhSFClhO103qp3AM3v4Ho=', 'jorgen.skovly@gmail.com', true, true, "QWERTY1");
+insert into users values ('gronnbec','NgzbunAvWIkMJhssTsfWzDwhSFClhO103qp3AM3v4Ho=', 'kengroenn@gmail.com', true, true, "QWERTY2");
+insert into users values ('mathiamo','NgzbunAvWIkMJhssTsfWzDwhSFClhO103qp3AM3v4Ho=', 'mathiamo@gmail.com', true, true, "QWERTY3");
 
 insert into country values ('NO','Norway');
 insert into country values ('SWE','Sweden');
