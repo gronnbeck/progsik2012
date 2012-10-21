@@ -26,7 +26,7 @@ try {
 	pstatement.setString(1, username);
 	pstatement.executeUpdate();
 } catch (Exception ex) {
-	out.println("Unable to execute update to database: " + ex.getMessage());
+	out.println("Unable to execute update to database");
 	return;
 } finally {
 	pstatement.close();

@@ -41,7 +41,7 @@ try {
 		out.println("</tr>");
 	}
 } catch (Exception ex) {
-	out.println("Unable to execute query to database: " + ex.getMessage());
+	out.println("Unable to execute query to database: ");
 	return;
 } finally {
 	pstatement.close();

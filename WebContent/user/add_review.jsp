@@ -55,8 +55,7 @@
 			pstatement.setString(3, review);
 			pstatement.executeUpdate();
 		} catch (Exception ex) {
-			out.println("Unable to execute update to database."
-					+ ex.getMessage());
+			out.println("Unable to execute update to database");
 		} finally {
 			pstatement.close();
 			connection.close();

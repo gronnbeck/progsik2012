@@ -57,7 +57,7 @@
 		}
 		
 	} catch (Exception ex) {
-		out.println("Unable to execute update to database: " + ex.getMessage());
+		out.println("Unable to execute update to database");
 		return;
 	} finally {
 		statement.close();

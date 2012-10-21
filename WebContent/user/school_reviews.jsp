@@ -31,8 +31,7 @@
 			school_shortname = reviews.getString(6);
 		}
 	} catch (Exception ex) {
-		out.println("Unable to execute query to database."
-				+ ex.getMessage());
+		out.println("Unable to execute query to database");
 	} finally {
 		pstatement.close();
 		connection.close();
