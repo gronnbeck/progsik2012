@@ -5,9 +5,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Admin</title>
 </head>
 <body>
+
+<ul>
+
+<li><a href="user_management.jsp">User management</a></li>
+<li><a href="add_country_form.jsp">Add Country</a></li>
+<li><a href="add_school_form.jsp">Add School</a></li>
+
+</ul>
 
 </body>
 </html>
