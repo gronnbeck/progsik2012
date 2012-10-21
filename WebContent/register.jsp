@@ -27,7 +27,11 @@
 	String username = request.getParameter("username");
 	String email = request.getParameter("email");
 	if(password == null) {
-	out.println("You dick! Write a password...");
+		out.println("You dick! Write a password...");
+		%>
+		<meta http-equiv="refresh" content="0;url=registerForm.jsp">
+		<%
+		return;
 	} else {
 	md.update(password.getBytes("UTF-8"));
 	byte[] digest = md.digest();
@@ -42,8 +46,8 @@
 	DataSource dataSource = (DataSource) envCtx.lookup("jdbc/lut2");
 	
 	if (!isLegal(password) || !isLegal(username)) {
+		out.println("You dick! Write a correct password...");
 		%>
-		REDIRECTING IN 5 SECONDS!!!
 		<meta http-equiv="refresh" content="5;url=registerForm.jsp">
 		<%
 		return;
@@ -63,8 +67,8 @@
 			pstatement.setString(6, validateString);		
 			pstatement.executeUpdate();
 		} catch (Exception ex) {
-			out.println("Unable to execute update to database."
-					+ ex.getMessage());
+			out.println("Unable to execute update to database: " + ex.getMessage());
+			return;
 		} finally {
 			pstatement.close();
 			connection.close();
@@ -91,5 +95,6 @@
     </head>
     <body>
         An confirmation email has been sent to YOU!
-        </body>
+        When you have confirmed your email, you may login <a href="loginForm.jsp">here</a>.
+       </body>
     </html>
