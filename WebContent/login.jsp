@@ -3,7 +3,7 @@
 <%@page import="javax.naming.Context"%>
 <%@page import="javax.sql.DataSource"%>
 <%@page import="java.security.MessageDigest"%>
-<%@page import="com.sun.org.apache.xml.internal.security.utils.Base64"%>
+<%@page import="java.util.Arrays"%>
 <%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
@@ -14,13 +14,18 @@
 		return;
 	}
 
-	MessageDigest md = MessageDigest.getInstance("SHA-256");
+	
 	String password = request.getParameter("password");
 	String username = request.getParameter("username");
 	
+	MessageDigest md = MessageDigest.getInstance("SHA-256");
 	md.update(password.getBytes("UTF-8"));
 	byte[] digest = md.digest();
-	String digestString = Base64.encode(digest).toString();
+	StringBuffer sb = new StringBuffer();
+	for (byte b : digest) {
+		sb.append(Integer.toHexString((int) (b & 0xff)));
+	}
+	String digestString = sb.toString();
 
 	Context initCtx = new InitialContext();
 	Context envCtx = (Context) initCtx.lookup("java:comp/env");

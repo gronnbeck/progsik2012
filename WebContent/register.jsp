@@ -6,7 +6,6 @@
 <%@page import="javax.naming.Context"%>
 <%@page import="javax.sql.DataSource"%>
 <%@page import="java.security.MessageDigest"%>
-<%@page import="com.sun.org.apache.xml.internal.security.utils.Base64"%>
 <%@taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@include file="SendMail.jsp"%>
@@ -35,7 +34,11 @@
 	} else {
 	md.update(password.getBytes("UTF-8"));
 	byte[] digest = md.digest();
-	String digestString = Base64.encode(digest).toString();
+	StringBuffer sb = new StringBuffer();
+	for (byte b : digest) {
+		sb.append(Integer.toHexString((int) (b & 0xff)));
+	}
+	String digestString = sb.toString();
 	
 	// Generate random validatestring
 	Random random = new Random(System.nanoTime());
@@ -75,7 +78,7 @@
 		}
 	}
 	
-	String message = "Congratulations on registering... Please confirm your account by clicking the following link: http://localhost:8080/LUT_2.0/confirmRegistration.jsp?username=" + username + "&validate=" + validateString;
+	String message = "Congratulations on registering... Please confirm your account by clicking the following link: https://paris.idi.ntnu.no:5081/lut_2.0/confirmRegistration.jsp?username=" + username + "&validate=" + validateString;
 	
 	SendMail sendmail = new SendMail();
 	sendmail.send(email, "Confirm registration on LUT2.0", message);

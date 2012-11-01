@@ -36,7 +36,8 @@
 	MessageDigest md = MessageDigest.getInstance("SHA-256");
 	md.update(password.getBytes("UTF-8"));
 	byte[] digest = md.digest();
-	String hashedPassword = Base64.encode(digest).toString();
+	//String hashedPassword = Base64.encode(digest).toString();
+	String hashedPassword = Arrays.toString(digest);
 
 	Connection connection = dataSource.getConnection();
 	PreparedStatement pstatement = null;

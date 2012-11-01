@@ -6,7 +6,6 @@
 <%@page import="javax.naming.Context"%>
 <%@page import="javax.sql.DataSource"%>
 <%@page import="java.security.MessageDigest"%>
-<%@page import="com.sun.org.apache.xml.internal.security.utils.Base64"%>
 <%@include file="SendMail.jsp"%>
 <%
 	String username = request.getParameter("username");
@@ -42,7 +41,11 @@
 			
 			md.update(password.getBytes("UTF-8"));
 			byte[] digest = md.digest();
-			String newPassword = Base64.encode(digest).toString();
+			StringBuffer sb = new StringBuffer();
+			for (byte b : digest) {
+				sb.append(Integer.toHexString((int) (b & 0xff)));
+			}
+			String newPassword = sb.toString();
 			
 			statement.setString(1, newPassword);
 			statement.setString(2, username);
